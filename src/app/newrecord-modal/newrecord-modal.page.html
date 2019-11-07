@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar text-center>
+    <ion-title text-center>Add new picture</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-label color="primary">
+        <h2>Select Title and description for new photo</h2>
+        </ion-label>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-item>
+          <div>
+            <ion-label color="primary">Title</ion-label>
+            <ion-input [(ngModel)]="modalTitle"></ion-input>
+          </div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-item>
+          <div>
+            <ion-label color="primary">Description</ion-label>
+            <ion-textarea [(ngModel)]="modalDescription"></ion-textarea>
+          </div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-button (click)="closeModal()">Take Photo</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

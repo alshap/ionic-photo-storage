@@ -1,0 +1,7 @@
+{
+  "name": "PhotoStorage",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

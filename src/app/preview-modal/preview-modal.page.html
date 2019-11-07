@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Photo view</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <ion-item>
+          <ion-row>
+            <div>
+              <ion-label color="primary">Title</ion-label>
+              {{modalTitle}}
+            </div>
+          </ion-row>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-item>
+          <div>
+          <ion-textarea color="primary">Description</ion-textarea>
+          {{modalDescription}}
+        </div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col text-center>
+          <ion-item>
+            <div>
+            <ion-label color="primary">Date</ion-label>
+            {{modalDate}}
+          </div>
+          </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+          <ion-col text-center>
+            <ion-item>
+              <div>
+              <ion-label color="primary">Time</ion-label>
+              {{modalTime}}
+              </div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-item>
+          <div>
+            <ion-label color="primary">Preview</ion-label>
+            <ion-img [src]="modalImg"></ion-img>
+          </div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-button (click)="closeModal()">Close</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
