@@ -58,7 +58,7 @@ If something went wrong check **IonicAppHowTo.html**
 
 <details><summary>**Спойлер(приложение)**</summary>
 
-<div>![](https://i.imgur.com/AuaTx1J.jpg)</div>
+![Screenshot](https://i.imgur.com/AuaTx1J.jpg)
 
 </details>
 
@@ -83,7 +83,7 @@ Node.js - Программная платформа, основанная на �
 
 <details><summary>**Спойлер(Как открыть Node.js command prompt)**</summary>
 
-<div>![](https://i.imgur.com/s366ujY.png)</div>
+![Screenshot](https://i.imgur.com/s366ujY.png)
 
 </details>
 
@@ -209,7 +209,7 @@ IOS
 
 <details><summary>**Как это должно выглядить**</summary>
 
-<div>![](https://i.imgur.com/1BJecTV.png)</div>
+![Screenshot](https://i.imgur.com/1BJecTV.png)
 
 </details>
 
@@ -243,7 +243,7 @@ CREATE TABLE IF NOT EXISTS photos(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEX
 
 <details><summary>**Как это должно выглядить**</summary>
 
-<div>![](https://i.imgur.com/07SZFyi.png)</div>
+![Screenshot](https://i.imgur.com/07SZFyi.png)
 
 </details>
 
