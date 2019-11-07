@@ -1,0 +1,828 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Ionic Get Started</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+  .largecode{
+      width: 100%;
+      background:#F8F8FF;
+      margin-left: 7%;
+      margin-right: 7%;
+      padding: left;
+  }
+  .multicode{
+      width: 70%;
+      background:#F8F8FF;
+      margin-left: 7%;
+      margin-right: 7%;
+  }
+  code{
+      background:#F8F8FF;
+      border:black dashed 1px; 
+      padding:6px;
+      margin-left: 7%;
+      margin-right: 7%;
+      }​
+  h4{font-size: 30px;}
+  details{
+      font-family: 'Times New Roman', Times, serif;
+      margin-left: 7%;
+      margin-right: 7%;
+  }
+  h3 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 26px;
+      margin-left: 1.5%;
+      margin-right: 1.5%;
+  }
+  h2 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 24px;
+      margin-left: 3%;
+      margin-right: 3%;
+  }
+  h1 {
+      font-size: 20px;
+      font-family: 'Times New Roman', Times, serif;
+      margin-left: 5%;
+      margin-right: 5%;
+  }
+  p {
+      font-size: 17px;
+      font-family: 'Times New Roman', Times, serif;
+      margin-left: 7%;
+      margin-right: 7%;
+  }
+  ul {
+      margin-left: 7%;
+      margin-right: 7%;
+      font-size: 17px;
+      font-family: 'Times New Roman', Times, serif;
+  }
+  details[open] div {
+  animation: spoiler 1s;
+    }
+    @keyframes spoiler {
+    0%   {opacity: 0;}
+    100% {opacity: 1;}
+    }
+  .backgrnd{
+      width: 70%;
+      margin: 0 auto;
+      background-color: #f0f4f9;
+      border:3px solid;
+      border-color:lightskyblue;
+      border-radius: 10px;
+  }
+  .mainclr{
+      width:100%;
+      background-color: rgba(243, 243, 234, 0.589);
+  }
+
+  </style>
+</head>
+<body style="margin: 0; padding: 0;">
+    <script src="//cdn.jsdelivr.net/npm/details-polyfill@1/index.min.js" async></script>
+
+    <div class="mainclr">
+        <div class="backgrnd">
+        <h3><u>Создание гибридного мобильного приложения</u></h3>
+        <h2>    Вступление</h2>
+        <p>Мы рассмотрим создание гибридного мобильного приложения, используя Ionic и Cordova.<br></p>
+        <p>Будут рассмотрены следующие аспекты:</p>
+            <ul>
+                <li>Подготовка рабочей среды</li>
+                <li>Тестирование и отладка</li>
+                <li>Создание гибридного приложения с внедрением нативных функций</li>
+            </ul>
+        <h1>Предпросмотр</h1>
+        <p>Приложение, которое мы будем создавать представляет из себя базу данных SQLite для хранения фотографий,сделанных на камеру устройства.<br>
+        В ходе создания приложения мы рассмотрим внедрение нативной функции камеры, работу с базой данных SQLite, управление модальными окнами и окнами подтверждения, а так же
+        возможностями ввода и вывода данных. </p>
+        <details>
+            <summary><b>Спойлер(приложение)</b></summary>
+            <div><img width=50% src="images/preview.jpg"/></div>
+        </details>
+
+
+        <h2>Подготовка рабочей среды</h2>
+        <h1>Установка Node.js</h1>
+        <p>Node.js - Программная платформа, основанная на движке V8. Командная строка Node.js представляет собой универсальный инструмент
+            для установки необходимых модулей, запуска и сборки приложений.<br>
+            <a href="https://nodejs.org"><b>Ссылка на установку</b></a>
+        </p>
+        <h1>Установка IDE</h1>
+        <p>Разрабатывать приложение можно, используя любой текстовый редактор, но рекоментуется использовать интегрированные среды разработки
+            , так как они обеспечивают удобство и контроль ошибок.<br>
+            Одна из наиболее удобных IDE является Visual Studio Code.<br>
+            <a href="https://code.visualstudio.com/"><b>Ссылка на установку</b></a>
+        </p>
+        <h1>Установка Ionic и Cordova</h1>
+        <p><a href="https://ionicframework.com/getting-started">Оффициальная документация</a></p>
+        <p>Установка Ionic и всех модулей, связанных с ним, происходит из командной строки Node.js.</p>
+        <details>
+            <summary><b>Спойлер(Как открыть Node.js command prompt)</b></summary>
+            <div><img width=50% src="images/nodefind.jpg"/></div>
+        </details>
+        <p>В открытой командной строке нужно прописать следующую команду для установки Ionic<br></p>
+        <code>npm install -g ionic</code>
+        <p>И для Cordova</p>
+        <code>npm install -g cordova</code>
+
+
+        <h2>Тестирование и отладка</h2>
+        <h1>Способы проверки приложения</h1>
+        <p>Приложение можно тестировать тремя способами: В браузере, в эмуляторе, либо на реальном устройстве.</p>
+        <p>Ionic использует WebView для постройки приложений. Это означает, что работу приложения можно проверять в любом браузере(НО 
+            приложения, использующие Cordova, т.е. нативные функции не могут быть отлажены в браузере или на эмуляторе).
+        </p>
+        <h1>Примеры запуска приложения</h1>
+        <p>Первым делом создадим пустой проект Ionic.</p>
+        <code>
+            ionic start MyApp tabs
+        </code>
+        <p>И перейдем в корневую папку проекта</p>
+        <code>
+            cd app1
+        </code>
+        <p>Теперь мы можем запустить проект.</p>
+        <h1>Запуск в браузере</h1>
+            <p>Следующая команда запустит локальный веб-сервер с нашим приложением.</p>
+        <code>
+            ionic serve
+        </code>
+        <p>Проверить работу приложения можно в браузере, введя <b>localhost:8100</b> в поле ввода для сайта(порт может меняться, более подробно
+            будет написано в ходе выполнения команды serve)<br>
+        Приложение будет отлаживаться в реальном времени. Любые изменения в коде сразу отобразятся в браузере.</p>
+        <h1>Запуск на реальном устройстве.</h1>
+        <p>Устройство должно быть подключено по USB и на устройстве должен быть включен режим разработчика.
+            <br><b>Следующая команда покажет все видимые устройства и эмуляторы.</b><br></p>
+            <code>adb devices</code> 
+        <p>Запуск на устройстве требует установки дополнительного ПО.(Java SDK, Android SDK и Gradle).<br>
+        <a href="https://ionicframework.com/docs/v3/developer-resources/platform-setup/windows-setup.html"><b>Как установить Java SDK, Android SDK и Gradle</b></a><br>
+        <p>Теперь все готово к запуску приложений. Следующие команды добавят возможность запуска на нужном устройстве.<br>
+        Android</p>
+        <code>ionic cordova platform add android</code>
+        <p>IOS</p>
+        <code>ionic cordova platform add ios</code>
+        <p>Теперь можно запускать приложение(убедитесь, что устройство подключено по usb и на нем включен режим разработчика)</p>
+        <code>ionic cordova run [platform]</code>
+        <p>Эта команда автоматически установит и запустит приложение на подключенном устройстве.<br>
+        Параметр <b>--livereload</b> позволит проверять изменения в коде в реальном времени, не вынуждая постоянно переустанавливать приложение</p>
+        <code>ionic cordova run [platform] --livereload</code>
+        <h1>Запуск на эмуляторе</h1>
+        <p>Эмулятор удобнее всего создать с помощью Android Studio.<br>
+        <a href="https://ionicframework.com/docs/installation/android">Как создать эмулятор Android</a></p>
+        <p><b>*Следует помнить, что процессоры Intel и AMD поддерживают разные эмуляторы</b></p>
+        <p>Следующая команда запустит проект на доступном эмуляторе</p>
+        <code>ionic cordova emulate [platform]</code>
+        
+        <h2>Создание первого приложения</h2>
+        <p>Создадим пустое приложение с встроенным боковым меню на фреймворке Angular</p>
+        <code>ionic start PhotoStorage sidemenu</code>
+        <p>Далее следует выбрать Angular и подождать генерацию приложения.</p>
+        <h1>Немного о том, что находится в сгенерированном проекте</h1>
+        <ul>
+                <li>Папка <b>node_modules</b> содержит все подключенные библиотеки к проекту</li>
+                <li>Файл <b>package.json</b> содержит версии всех используемых инструментов</li>
+                <li>Файл <b>config.xml</b> название и версию приложения(в Ionic 4 может отсутствовать по умолчанию до генерации Cordova.
+                Для подключения можно ввести команду <b>ionic integrations enable cordova --add</b></li>
+                <li>Папка <b>src</b> содержит весь исходный код приложения
+                    <ul><li>Папка <b>app</b> содержит все страницы приложения</li></ul></li>
+        </ul>
+        <h1>Генерация страниц</h1>
+        <p>Для нашего приложения потребуется 4 страницы, 2 из которых будут модальными и 2 регулярными(главная страница, список фотографий, добавление фотографии и Предпросмотр
+            фотографий). Регулярные страницы мы сгенерировали вместе с приложением. Принцип генерации модальных и регулярных страниц одинаковый.<br>
+            Для генерации страниц воспользуемся командой, находясь в папке проекта.<br>
+            Для генерации страницы просмотра фотографии.</p>
+            <code>ionic generate page preview-modal</code>
+        <p>Для генерации страницы создания фотографии.</p>
+        <code>ionic generate page newrecord-modal</code>
+        <p>Генерация страницы создает папку из 5 файлов. Нам потребуются только 3 из них.</p>
+        <ul>
+            <li><b>.html</b> для визуализации контента.</li>
+            <li><b>.ts</b> для скриптов.</li>
+            <li><b>.scss</b> для визуальных стилей.</li>
+        </ul>
+            <p>Так же вместе с генерацией страниц в файле <b>/src/app/app-routing.module.ts</b> создаются пути в переменную <b>Routes</b> без которых навигация внутри
+            приложения не будет работать.</p>
+        <p>Так как страницы модальные, их требуется добавить в файл <b>src/app/app.module.ts</b> в качестве импортируемых элементов.<br>
+        В начало файла
+        </p>
+        <code>import { NewrecordModalPageModule } from './newrecord-modal/newrecord-modal.module';</code>
+        <p></p>
+        <code>import { PreviewModalPageModule } from './preview-modal/preview-modal.module';</code>
+        <p>И в переменную <b>imports</b> добавить <b>NewrecordModalPageModule, PreviewModalPageModule </b></p>
+        <details>
+            <summary><b>Как это должно выглядить</b></summary>
+            <div><img width=100% src="images/importpagemodule.jpg"/></div>
+        </details>
+        <h1>Добавляем сервис SQLite</h1>
+        <p>Создадим сервис и установим необходимые модули</p>
+        <pre><div class="multicode">
+  ionic g service services/database
+  npm install @ionic-native/sqlite
+  npm install @ionic-native/sqlite-porter
+  ionic cordova plugin add cordova-sqlite-storage
+  ionic cordova plugin add uk.co.workingedge.cordova.plugin.sqliteporter
+        </div></pre>
+        <p>В папке /src/assets создадим файл <b>photos.sql</b><br>
+        Откроем <b>photos.sql</b> в текстовом редакторе и добавим в него строку<br><p></p>
+        <div class="multicode">
+            CREATE TABLE IF NOT EXISTS photos(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT, description TEXT, img TEXT, date TEXT, time TEXT);
+          </div>
+        <p>И добавим импорт модулей в файл <b>/src/app/app.module.ts</b><br>
+        В начало</p>
+        <pre><div class="multicode">
+  import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+  import { SQLite } from '@ionic-native/sqlite/ngx';
+  import { HttpClientModule } from '@angular/common/http';
+        </div></pre>
+        <p>В <b>imports</b> модуль HttpClientModule и в <b>providers</b> модули SQLite, SQLitePorter</p>
+        <details>
+            <summary><b>Как это должно выглядить</b></summary>
+            <div><img width=100% src="images/importsqlmodule.jpg"/></div>
+        </details>
+        <p>Перейдем в <b>src/app/services/database.service.ts</b> и добавим функции базы данных</p>
+
+<details>
+    <summary><b>Код database.service.ts</b></summary>
+    <pre><div class="largecode">
+import { Platform } from '@ionic/angular';
+import { Injectable } from '@angular/core';
+import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+import { HttpClient } from '@angular/common/http';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { BehaviorSubject, Observable } from 'rxjs';
+ 
+export interface Photo {
+  id: number,
+  title: string,
+  description: string,
+  img: string
+  date: string
+  time: string
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DatabaseService {
+  private database: SQLiteObject;
+  private dbReady: BehaviorSubject = new BehaviorSubject(false);
+ 
+  photos = new BehaviorSubject([]);
+
+  constructor(private plt: Platform, private sqlitePorter: SQLitePorter,
+             private sqlite: SQLite, private http: HttpClient) {
+    this.plt.ready().then(() => {
+      this.sqlite.create({
+        name: 'photos.db',
+        location: 'default'
+      })
+      .then((db: SQLiteObject) => {
+          this.database = db;
+          this.checkTableCreation();
+          this.seedDatabase();
+      });
+    });
+  }
+ 
+  seedDatabase() {
+    this.http.get('assets/photos.sql', { responseType: 'text'})
+    .subscribe(sql => {
+      this.sqlitePorter.importSqlToDb(this.database, sql)
+        .then(_ => {
+          this.loadPhotos();
+          this.dbReady.next(true);
+        })
+        .catch(e => console.error(e));
+    });
+  }
+ 
+  getDatabaseState() {
+    return this.dbReady.asObservable();
+  }
+ 
+  getPhotos(): Observable {
+    return this.photos.asObservable();
+  }
+
+  checkTableCreation(){
+    return this.database.executeSql('CREATE TABLE IF NOT EXISTS photos(id INTEGER PRIMARY KEY AUTOINCREMENT,'+
+                                    'title TEXT, description TEXT, img TEXT, date TEXT, time TEXT');
+  }
+
+  loadPhotos() {
+    return this.database.executeSql('SELECT * FROM photos', []).then(data => {
+      let photos: Photo[] = [];
+ 
+      if (data.rows.length > 0) {
+        for (var i = 0; i < data.rows.length; i++) {
+          
+          photos.push({ 
+            id: data.rows.item(i).id,
+            title: data.rows.item(i).title, 
+            description: data.rows.item(i).description, 
+            img: data.rows.item(i).img,
+            date: data.rows.item(i).date,
+            time: data.rows.item(i).time
+           });
+        }
+      }
+      this.photos.next(photos);
+    });
+  }
+ 
+  addPhoto(title, description, img) {
+    let today = new Date();
+    let date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let data = [title, description, img, date, time];
+    return this.database.executeSql('INSERT INTO photos (title, description, img, date, time)'+
+                                    ' VALUES (?, ?, ?, ?, ?)', data).then(data => {
+      this.loadPhotos();
+    });
+  }
+ 
+  getPhoto(id): Promise {
+    return this.database.executeSql('SELECT * FROM photos WHERE id = ?', [id]).then(data => {
+    let i = 0
+    return {
+        id: data.rows.item(i).id,
+        title: data.rows.item(i).title, 
+        description: data.rows.item(i).description, 
+        img: data.rows.item(i).img,
+        date: data.rows.item(i).date,
+        time: data.rows.item(i).time
+      }
+    });
+  }
+ 
+  deletePhoto(id) {
+    return this.database.executeSql('DELETE FROM photos WHERE id = ?', [id]).then(_ => {
+      this.loadPhotos();
+    });
+  }
+
+  deletePhotos(){
+    this.database.executeSql('DELETE FROM photos');
+    this.database.executeSql('VACUUM photos');
+    this.database.executeSql('UPDATE sqlite_sequence SET seq = 0 WHERE name = "photos"');
+    return this.loadPhotos();
+    
+  }
+ 
+}
+</div></pre>
+</details>
+        <p>Теперь базу данных можно вызывать в любом месте программы.</p>
+        <h1>Добавляем функцию камеры и список фотографий</h1>
+        <p>Импортируем модуль камеры и добавим его в <b>app.module.ts</b></p>
+        <pre><div class="multicode">
+  ionic cordova plugin add cordova-plugin-camera
+  npm install @ionic-native/camera
+        </div></pre>
+        <p>И в <b>app.module.ts</b> добавим</p>
+        <code>import { Camera } from '@ionic-native/camera/ngx';</code>
+        <p>В <b>providers</b> добавим <b>Camera</b></p>
+        <p>Перейдем в файл <b>src/app/list/list.page.html</b> и изменим внешний вид страницы.
+<details>
+<summary><b>Код list.page.html</b></summary>
+<pre><div class="largecode">
+&lt;ion-header&gt;
+  &lt;ion-toolbar&gt;
+    &lt;ion-buttons slot="start"&gt;
+      &lt;ion-menu-button&gt;&lt;/ion-menu-button&gt;
+    &lt;/ion-buttons&gt;
+    &lt;ion-title&gt;
+      List
+    &lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content&gt;
+  &lt;ion-card class="list-height"&gt;
+      &lt;ion-list scroll="false"&gt;
+        &lt;ion-item *ngFor="let photo of photos; let i = index"&gt;
+          &lt;ion-icon name="trash" slot="start" (click)=deletePhoto(photo.id)&gt;&lt;/ion-icon&gt;
+            &lt;ion-label (click)="openPreviewModal(i)"&gt;&lt;h2&gt;{{photo.title}}&lt;/h2&gt;&lt;/ion-label&gt;
+            &lt;div class="item-id" slot="end"&gt;
+            &lt;p&gt;ID: {{photo.id}}&lt;/p&gt;
+            &lt;p&gt;{{photo.date}}&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/ion-item&gt;
+      &lt;/ion-list&gt;
+&lt;/ion-card&gt;
+  &lt;div class="button-centered"&gt;
+    &lt;ion-button (click)="erasePhotos()" horizontal="center"&gt;Erase list&lt;/ion-button&gt;
+  &lt;/div&gt;
+  &lt;ion-fab vertical="bottom" horizontal="center" slot="fixed"&gt;
+    &lt;ion-fab-button (click)="openModal()"&gt;
+      &lt;ion-icon name="camera"&gt;&lt;/ion-icon&gt;
+    &lt;/ion-fab-button&gt;
+  &lt;/ion-fab&gt;
+&lt;/ion-content&gt;
+</div></pre>        
+</details>
+         <p>Пояснения к коду</p>
+         <ul>
+          <li><b>&lt;ion-header&gt;</b> - верхняя панель приложения</li>
+          <li><b>&lt;ion-content&gt;</b> - внутренняя часть приложения
+          <li><b> &lt;ion-list&gt;</b> - визуализация коллекции данных
+          <li><b>&lt;ion-button&gt;</b> - стандартная кнопка
+          <li><b>&lt;ion-fab&gt;</b> - элемент в форме круга
+          <li><b> &lt;ion-fab-button&gt;</b> - кнопка в форме круга
+          <li><b>(click)</b> - функция, вызываемая при нажатии на область тега</li>
+          <li><b>*ngFor</b> аттрибут ion-list, который принимает массив, итерируемый в <b>ion-item</b></li>
+         </ul>
+        <p>Перейдем в файл <b>list.page.ts</b> очистим класс <b>ListPage</b> и вставим следующий код</p>
+<details>
+    <summary><b>Код list.page.ts</b></summary>
+    <pre><div class="largecode">
+import { Component, OnInit } from '@angular/core';
+import { DatabaseService, Photo } from './../services/database.service';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { ModalController } from '@ionic/angular';
+import { NewrecordModalPage } from '../newrecord-modal/newrecord-modal.page'
+import { PreviewModalPage } from '../preview-modal/preview-modal.page'
+import { AlertController } from '@ionic/angular';
+ 
+
+@Component({
+  selector: 'app-list',
+  templateUrl: 'list.page.html',
+  styleUrls: ['list.page.scss']
+})
+export class ListPage implements OnInit {
+  photos: Photo[] = [];
+  dataReturned: any;
+  photo = {title: '',
+           description: '',
+           img: ''};
+  
+  constructor(private camera: Camera, private db: DatabaseService,
+             public modalController: ModalController, public alertController: AlertController) {
+    
+  }
+
+  takePicture() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    };
+    this.camera.getPicture(options).then((imageData) => {
+      this.photo.img = 'data:image/jpeg;base64,' + imageData;
+      this.addPhoto();
+    }, (err) => {
+      console.log("Camera issue:" + err);
+    });
+  }
+
+  ngOnInit() {
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {
+        this.db.getPhotos().subscribe(photos => {
+          this.photos = photos;
+        })
+      }
+    });
+  }
+
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: NewrecordModalPage,
+      componentProps: {
+      }
+    });
+ 
+    modal.onDidDismiss().then((data) => {
+     // if (data !== null) {
+        const returnedData = data['data']
+        this.photo.title = returnedData[0];
+        this.photo.description = returnedData[1];
+        this.takePicture();
+      //}
+    });
+    return await modal.present();
+  }
+  
+  async openPreviewModal(index: number) {
+    let previewphoto = this.photos[index];
+    const modal = await this.modalController.create({
+      component: PreviewModalPage,
+      componentProps: {
+        "paramTitle": previewphoto['title'],
+        "paramDescription": previewphoto['description'],
+        "paramImg": previewphoto['img'],
+        "paramDate": previewphoto['date'],
+        "paramTime": previewphoto['time']
+
+      }
+    });
+    return await modal.present();
+  }
+
+
+  addPhoto() {
+    this.db.addPhoto(this.photo['title'], this.photo['description'], this.photo['img'])
+    .then(_ => {
+      this.photo = {title: '',
+                    description: '',
+                    img: ''};
+    });
+  }
+
+  async deletePhoto(id){
+    const alert = await this.alertController.create({
+      header: 'Are you sure to delete photo?',
+      message: 'This change can not be prevented',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+          }
+        }, {
+          text: 'Confirm',
+          handler: () => {
+            this.db.deletePhoto(id);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async erasePhotos(){
+    const alert = await this.alertController.create({
+      header: 'Are you sure to erase database?',
+      message: 'This change can not be prevented',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+          }
+        }, {
+          text: 'Confirm',
+          handler: () => {
+            this.db.deletePhotos();
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+  
+}
+  </div></pre>        
+    </details>
+    <p>Пояснение к функциям</p>
+    <ul>
+      <li><b>takePicture</b> запускает камеру устройства и позволяет сделать снимок, возвращая выходное изображение</li>
+      <li><b>ngOnInit</b> функция по умолчанию, срабатывает при переходе на страницу</li>
+      <li><b>openModal</b> открывает модальное окно для записи данных изображения</li>
+      <li><b>openPreviewModal</b> открывает модальное окно для просмотра изображения</li>
+      <li><b>addPhoto</b> добавляет фотографию в базу данных</li>
+      <li><b>deletePhoto</b> удаляет фотографию из базы данных(с вызовом окна подтверждения)</li>
+      <li><b>erasePhotos</b> очищает базу данных(с вызовом окна подтверждения)</li>
+    </ul>
+    <p>Перейдем в файл <b>src/app/list/list.page.scss</b> и добавим немного визуальных стилей</p>
+    <details>
+        <summary><b>Код list.page.scss</b></summary>
+        <pre><div class="largecode">
+	.list-height{
+		height: 70%;
+		overflow-y: scroll;
+	}
+	.button-centered{
+		text-align: center;
+	}    
+        </div></pre>
+    </details>
+    <p>Пояснение к коду<br>
+    Мы создали 2 css класса. Первый для фиксированного отображения списка и второй для выравнивания кнопки по центру.</p>
+    <h1>Работаем с модальными окнами</h1>
+    <p><b>NewrecordModalPage</b><br>
+    Перейдем в <b>/src/app/newrecord-modal</b> и добавим необходимый код в .html и .page.ts файлы</p>
+    <details>
+      <summary><b>Код example-modal.page.html</b></summary>
+      <pre><div class="largecode">
+&lt;ion-header&gt;
+  &lt;ion-toolbar text-center&gt;
+    &lt;ion-title text-center&gt;Add new picture&lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content&gt;
+  &lt;ion-grid&gt;
+    &lt;ion-row&gt;
+      &lt;ion-label color="primary"&gt;
+        &lt;h2&gt;Select Title and description for new photo&lt;/h2&gt;
+        &lt;/ion-label&gt;
+    &lt;/ion-row&gt;
+    &lt;ion-row&gt;
+      &lt;ion-col text-center&gt;
+        &lt;ion-item&gt;
+          &lt;div&gt;
+            &lt;ion-label color="primary"&gt;Title&lt;/ion-label&gt;
+            &lt;ion-input [(ngModel)]="modalTitle"&gt;&lt;/ion-input&gt;
+          &lt;/div&gt;
+        &lt;/ion-item&gt;
+      &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+    &lt;ion-row&gt;
+      &lt;ion-col text-center&gt;
+        &lt;ion-item&gt;
+          &lt;div&gt;
+            &lt;ion-label color="primary"&gt;Description&lt;/ion-label&gt;
+            &lt;ion-textarea [(ngModel)]="modalDescription"&gt;&lt;/ion-textarea&gt;
+          &lt;/div&gt;
+        &lt;/ion-item&gt;
+      &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+    &lt;ion-row&gt;
+      &lt;ion-col text-center&gt;
+        &lt;ion-button (click)="closeModal()"&gt;Take Photo&lt;/ion-button&gt;
+      &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+  &lt;/ion-grid&gt;
+&lt;/ion-content&gt;
+      </div></pre>
+    </details>
+    <p>Пояснение к коду</p>
+    <ul>
+      <li><b>ion-grid</b> табличный вид данных</li>
+      <li><b>[(ngModel)]</b> переменная, передаваемая на страницу для визуализации</li>
+    </ul>
+
+    <details>
+      <summary><b>Код newrecord-modal.page.ts</b></summary>
+      <pre><div class="largecode">
+  import { Component, OnInit } from '@angular/core';
+  import { ModalController } from '@ionic/angular';
+
+  @Component({
+    selector: 'app-newrecord-modal',
+    templateUrl: './newrecord-modal.page.html',
+    styleUrls: ['./newrecord-modal.page.scss'],
+  })
+  export class NewrecordModalPage implements OnInit {
+
+    modalTitle:string;
+    modalDescription:string;
+    modalPreview:string;
+  
+    constructor(
+      private modalController: ModalController,
+    ) { }
+  
+    ngOnInit() {
+      this.modalTitle = "Title";
+      this.modalDescription = "Description";
+    }
+  
+    async closeModal() {
+      let returned = [this.modalTitle, this.modalDescription];
+      await this.modalController.dismiss(returned);
+    }
+
+  }  
+      </div></pre>
+    </details>
+    <p>Пояснение к коду</p>
+    <ul>
+      <li><b>closeModal</b> - функция, которая передает данные со страницы на управляющую страницу и вызывает блок modal.onDidDismiss()</li>
+    </ul>
+    <p>Добавление и удаление фотографий готово. Осталось добавить контент для просмотра фотографии при нажатии на неё в списке.</p>
+    <p><b>PreviewModalPage</b></p>
+    <p>На страницу <b>preview-modal</b> передаются данные элемента из массива фотографий из <b>list.page.ts</b> и визуализируют его.</p>
+    <p>Перейдем в <b>/src/app/preview-modal</b></p>
+    <details>
+      <summary><b>Код preview-modal.page.html</b></summary>
+      <pre><div class="largecode">
+&lt;ion-header&gt;
+  &lt;ion-toolbar&gt;
+    &lt;ion-title&gt;Photo view&lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content&gt;
+  &lt;ion-grid&gt;
+    &lt;ion-row&gt;
+      &lt;ion-col text-center&gt;
+        &lt;ion-item&gt;
+          &lt;ion-row&gt;
+            &lt;div&gt;
+              &lt;ion-label color="primary"&gt;Title&lt;/ion-label&gt;
+              {{modalTitle}}
+            &lt;/div&gt;
+          &lt;/ion-row&gt;
+        &lt;/ion-item&gt;
+      &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+    &lt;ion-row&gt;
+      &lt;ion-col text-center&gt;
+        &lt;ion-item&gt;
+          &lt;div&gt;
+          &lt;ion-textarea color="primary"&gt;Description&lt;/ion-textarea&gt;
+          {{modalDescription}}
+        &lt;/div&gt;
+        &lt;/ion-item&gt;
+      &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+    &lt;ion-row&gt;
+        &lt;ion-col text-center&gt;
+          &lt;ion-item&gt;
+            &lt;div&gt;
+            &lt;ion-label color="primary"&gt;Date&lt;/ion-label&gt;
+            {{modalDate}}
+          &lt;/div&gt;
+          &lt;/ion-item&gt;
+        &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+    &lt;ion-row&gt;
+          &lt;ion-col text-center&gt;
+            &lt;ion-item&gt;
+              &lt;div&gt;
+              &lt;ion-label color="primary"&gt;Time&lt;/ion-label&gt;
+              {{modalTime}}
+              &lt;/div&gt;
+            &lt;/ion-item&gt;
+          &lt;/ion-col&gt;
+        &lt;/ion-row&gt;
+    &lt;ion-row&gt;
+      &lt;ion-col text-center&gt;
+        &lt;ion-item&gt;
+          &lt;div&gt;
+            &lt;ion-label color="primary"&gt;Preview&lt;/ion-label&gt;
+            &lt;ion-img [src]="modalImg"&gt;&lt;/ion-img&gt;
+          &lt;/div&gt;
+        &lt;/ion-item&gt;
+      &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+    &lt;ion-row&gt;
+      &lt;ion-col text-center&gt;
+        &lt;ion-button (click)="closeModal()"&gt;Close&lt;/ion-button&gt;
+      &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+  &lt;/ion-grid&gt;
+&lt;/ion-content&gt;
+      </div></pre>
+    </details>
+<p></p>
+<details>
+    <summary><b>Код preview-modal.page.ts</b></summary>
+  <pre><div class="largecode">
+  import { Component, OnInit } from '@angular/core';
+  import { ModalController, NavParams } from '@ionic/angular';
+
+  @Component({
+  selector: 'app-preview-modal',
+  templateUrl: './preview-modal.page.html',
+  styleUrls: ['./preview-modal.page.scss'],
+  })
+  export class PreviewModalPage implements OnInit {
+
+  modalTitle:string;
+  modalDescription:string;
+  modalImg:string;
+  modalDate:string;
+  modalTime:string;
+
+  constructor(
+  private modalController: ModalController,
+  private navParams: NavParams
+  ) { }
+
+  ngOnInit() {
+  console.table(this.navParams);
+  this.modalTitle = this.navParams.data.paramTitle;
+  this.modalDescription = this.navParams.data.paramDescription;
+  this.modalImg = this.navParams.data.paramImg;
+  this.modalDate = this.navParams.data.paramDate;
+  this.modalTime = this.navParams.data.paramTime;
+  }
+
+  async closeModal() {
+  await this.modalController.dismiss();
+  }
+
+  }
+  </div></pre>
+</details>
+<p>Теперь при нажатии на название фотографии в списке открывается модальное окно с просмотром фотографии.</p>
+        
+
+
+  </div>
+</div>
+</body>
+</html>
