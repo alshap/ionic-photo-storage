@@ -21,21 +21,23 @@ If something went wrong check **IonicAppHowTo.html**
 ```
 4. Add cordova resources
 ```
-npm install -g cordova-res
+>npm install -g cordova-res
 ```
 5. Add platform
 ```
 >ionic cordova platform add ios
 >ionic cordova platform add android
 ```
-6. Run project
+6. Check project works in browser
+```
+>ionic serve
+```
+7. Run project on device
 ```
 >ionic cordova run android
->ionic cordova run ios
 ```
 ## Plain start
 
-Documentation how to create project with all set ups is written in **IonicAppHowTo.html**. Open html file with any browser(in microsoft Edge it could appear incorrectly).
 
 ### <u>Создание гибридного мобильного приложения</u>
 
@@ -56,7 +58,7 @@ Documentation how to create project with all set ups is written in **IonicAppHow
 
 <details><summary>**Спойлер(приложение)**</summary>
 
-<div>![](images/preview.jpg)</div>
+<div>![](https://i.imgur.com/AuaTx1J.jpg)</div>
 
 </details>
 
@@ -81,7 +83,7 @@ Node.js - Программная платформа, основанная на �
 
 <details><summary>**Спойлер(Как открыть Node.js command prompt)**</summary>
 
-<div>![](images/nodefind.jpg)</div>
+<div>![](https://i.imgur.com/s366ujY.png)</div>
 
 </details>
 
@@ -200,13 +202,14 @@ IOS
 Так как страницы модальные, их требуется добавить в файл **src/app/app.module.ts** в качестве импортируемых элементов.  
 В начало файла
 
-`import { NewrecordModalPageModule } from './newrecord-modal/newrecord-modal.module';``import { PreviewModalPageModule } from './preview-modal/preview-modal.module';`
+`import { NewrecordModalPageModule } from './newrecord-modal/newrecord-modal.module';`
+`import { PreviewModalPageModule } from './preview-modal/preview-modal.module';`
 
 И в переменную **imports** добавить **NewrecordModalPageModule, PreviewModalPageModule**
 
 <details><summary>**Как это должно выглядить**</summary>
 
-<div>![](images/importpagemodule.jpg)</div>
+<div>![](https://i.imgur.com/1BJecTV.png)</div>
 
 </details>
 
@@ -214,41 +217,33 @@ IOS
 
 Создадим сервис и установим необходимые модули
 
-<pre>
-
-<div class="multicode">
+```
   ionic g service services/database
   npm install @ionic-native/sqlite
   npm install @ionic-native/sqlite-porter
   ionic cordova plugin add cordova-sqlite-storage
   ionic cordova plugin add uk.co.workingedge.cordova.plugin.sqliteporter
-        </div>
-
-</pre>
+```
 
 В папке /src/assets создадим файл **photos.sql**  
 Откроем **photos.sql** в текстовом редакторе и добавим в него строку  
-
-<div class="multicode">CREATE TABLE IF NOT EXISTS photos(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT, description TEXT, img TEXT, date TEXT, time TEXT);</div>
-
+```
+CREATE TABLE IF NOT EXISTS photos(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT, description TEXT, img TEXT, date TEXT, time TEXT);
+```
 И добавим импорт модулей в файл **/src/app/app.module.ts**  
 В начало
 
-<pre>
-
-<div class="multicode">
+```
   import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
   import { SQLite } from '@ionic-native/sqlite/ngx';
   import { HttpClientModule } from '@angular/common/http';
-        </div>
-
-</pre>
+```
 
 В **imports** модуль HttpClientModule и в **providers** модули SQLite, SQLitePorter
 
 <details><summary>**Как это должно выглядить**</summary>
 
-<div>![](images/importsqlmodule.jpg)</div>
+<div>![](https://i.imgur.com/07SZFyi.png)</div>
 
 </details>
 
@@ -256,9 +251,8 @@ IOS
 
 <details><summary>**Код database.service.ts**</summary>
 
-<pre>
+```typescript
 
-<div class="largecode">
 import { Platform } from '@ionic/angular';
 import { Injectable } from '@angular/core';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
@@ -385,9 +379,7 @@ export class DatabaseService {
   }
 
 }
-</div>
-
-</pre>
+```
 
 </details>
 
@@ -397,14 +389,10 @@ export class DatabaseService {
 
 Импортируем модуль камеры и добавим его в **app.module.ts**
 
-<pre>
-
-<div class="multicode">
+```
   ionic cordova plugin add cordova-plugin-camera
   npm install @ionic-native/camera
-        </div>
-
-</pre>
+```
 
 И в **app.module.ts** добавим
 
@@ -416,9 +404,8 @@ export class DatabaseService {
 
 <details><summary>**Код list.page.html**</summary>
 
-<pre>
+```
 
-<div class="largecode">
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -452,9 +439,8 @@ export class DatabaseService {
     </ion-fab-button>
   </ion-fab>
 </ion-content>
-</div>
 
-</pre>
+```
 
 </details>
 
@@ -473,9 +459,8 @@ export class DatabaseService {
 
 <details><summary>**Код list.page.ts**</summary>
 
-<pre>
+```typescript
 
-<div class="largecode">
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService, Photo } from './../services/database.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
@@ -614,9 +599,8 @@ export class ListPage implements OnInit {
   }
 
 }
-  </div>
 
-</pre>
+```
 
 </details>
 
@@ -634,9 +618,7 @@ export class ListPage implements OnInit {
 
 <details><summary>**Код list.page.scss**</summary>
 
-<pre>
-
-<div class="largecode">
+```css
 	.list-height{
 		height: 70%;
 		overflow-y: scroll;
@@ -644,10 +626,7 @@ export class ListPage implements OnInit {
 	.button-centered{
 		text-align: center;
 	}    
-        </div>
-
-</pre>
-
+```
 </details>
 
 Пояснение к коду  
@@ -660,9 +639,8 @@ export class ListPage implements OnInit {
 
 <details><summary>**Код example-modal.page.html**</summary>
 
-<pre>
+```
 
-<div class="largecode">
 <ion-header>
   <ion-toolbar text-center>
     <ion-title text-center>Add new picture</ion-title>
@@ -703,9 +681,8 @@ export class ListPage implements OnInit {
     </ion-row>
   </ion-grid>
 </ion-content>
-      </div>
 
-</pre>
+```
 
 </details>
 
@@ -716,9 +693,9 @@ export class ListPage implements OnInit {
 
 <details><summary>**Код newrecord-modal.page.ts**</summary>
 
-<pre>
 
-<div class="largecode">
+```typescript
+
   import { Component, OnInit } from '@angular/core';
   import { ModalController } from '@ionic/angular';
 
@@ -748,9 +725,8 @@ export class ListPage implements OnInit {
     }
 
   }  
-      </div>
 
-</pre>
+```
 
 </details>
 
@@ -768,9 +744,8 @@ export class ListPage implements OnInit {
 
 <details><summary>**Код preview-modal.page.html**</summary>
 
-<pre>
+```
 
-<div class="largecode">
 <ion-header>
   <ion-toolbar>
     <ion-title>Photo view</ion-title>
@@ -838,15 +813,13 @@ export class ListPage implements OnInit {
     </ion-row>
   </ion-grid>
 </ion-content>
-      </div>
 
-</pre>
+```
 
 </details><details><summary>**Код preview-modal.page.ts**</summary>
 
-<pre>
+```typescript
 
-<div class="largecode">
   import { Component, OnInit } from '@angular/core';
   import { ModalController, NavParams } from '@ionic/angular';
 
@@ -882,10 +855,8 @@ export class ListPage implements OnInit {
   }
 
   }
-  </div>
 
-</pre>
-
+```
 </details>
 
 Теперь при нажатии на название фотографии в списке открывается модальное окно с просмотром фотографии.
