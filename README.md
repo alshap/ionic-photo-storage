@@ -35,5 +35,5 @@ npm install -g cordova-res
 ```
 ## Plain start
 
-Documentation how to create project with all set ups is written in **IonicAppHowTo.html**
+Documentation how to create project with all set ups is written in **IonicAppHowTo.html**. Open html file with any browser(in microsoft Edge it could appear incorrectly).
 
